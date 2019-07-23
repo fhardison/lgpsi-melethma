@@ -20,3 +20,4 @@ Thus each chapter should include exercises that fulfil the same goals as the sec
 |μελετήμα 'Β | Fill in the correct word in the correct form | ἡ Σπάρτη πόλις -- ἑστιν. |
 |μελετήμα 'Γ | Answer a question based on the reading | τὶς ἑστιν ἡ Σπάρτη;|
 
+*An important principle is that each question should ideally include only one new thing.* This pacing is one of the things that sets LLPSI apart from other Greek courses and we would like to duplicate it here.
