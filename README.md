@@ -21,3 +21,11 @@ Thus each chapter should include exercises that fulfil the same goals as the sec
 |μελετήμα 'Γ | Answer a question based on the reading | τὶς ἑστιν ἡ Σπάρτη;|
 
 *An important principle is that each question should ideally include only one new thing.* This pacing is one of the things that sets LLPSI apart from other Greek courses and we would like to duplicate it here.
+
+## Thoughts on building questions
+
+1. Follow the schema above. 
+2. Read through the chapter of LGPSI and identify new words, endings, and sentences. Mark those in some way.
+3. Draft questions that ask about those things and group them into the three sections. 
+
+Currently I'm reading throught the chapter and bolding the new things. Then I copy the sentence I want to use to build a question from LGPSI (to save typing and messing up accents). For word completion questions, I'm using `--` to mark the blank in the word. For questions that ask the reader to supply the whole word I mark the blank with `---`. 
