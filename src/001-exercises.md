@@ -1,3 +1,10 @@
+# ΠΕΡΊΟΔΟΣ ΕΥΡΩΠΗΣ
+
+![](Europe-LGPSI-1-web.png)
+
+
+
+
 # ΓΡΑΜΜΑΤΙΚΗ
 
 ἐνικὸν καὶ πληθυντικόν
@@ -48,3 +55,4 @@
 * ἆρα δύο μεγας αριθμός ἐστιν;
 
 
+Some maps, charts, or drawings produced with Map Creator software from fmosoft.com. Used by permission. All rights reserved.
