@@ -18,7 +18,7 @@ for FILE in FILES:
         cons = []
         for line in f:
             if not(line.strip() == ''):
-                cons.append(re.sub(r'\d\d\.\d+ ','',line.rstrip()))
+                cons.append(re.sub(r'\d\d\.\d+ ', '', line.rstrip()))
     with open(FILE[1], 'w', encoding="UTF-8") as g:
         LCOUNT = 1
         prefix = FILE[0]

@@ -121,10 +121,17 @@ WORK_LIST = glob.glob(os.path.join('..', 'src', '*.md'))
 
 #WORK_LIST =[os.path.join('..', 'src', '002-exercises.md'), os.path.join('..', 'src', 'grammar-index.md')]
 
+def make_cloze(line):
+    return re.sub(r' __([ .?;·])', r' ___\1', re.sub(r'{{[^}]+}}', '__', line))
+
+def make_answers(line):
+    return line.replace('{{', '<strong>[').replace('}}', ']</strong>')
+
 for WORK in WORK_LIST:
     print(WORK)
     SRC = WORK
     DEST = WORK.replace("src", "docs").replace(".md", ".html")
+    ANSWERS = DEST.replace('.html', '_answers.html') 
     TITLE = 'Lingua Graeca Per Se Illustrata: grammar and exercises'
     print(TITLE)
     HEADER = f"""
@@ -166,6 +173,27 @@ for WORK in WORK_LIST:
                     print("Multiple lines with same ref number in file!")
             renderer.render_buffers(cons)
             print(len(cons))
-            renderer.render_lines(list(cons.values()), lambda x: print(f"{mistletoe.markdown(x)}", file=g))
+            renderer.render_lines(list(cons.values()), lambda x: print(f"{make_cloze(mistletoe.markdown(x))}", file=g))
             print(FOOTER, file=g)
+    with open(SRC, encoding="UTF-8") as f:
+        with open(ANSWERS, "w", encoding="UTF-8") as g:
+            print(HEADER, file=g)
+            line_counter = 0
+            cons = dict()
+            fn_buffer = []
+            for line in f:
+                parts = line.split(maxsplit=1)
+                ref = parts[0]
+                content = parts[1]
+                if not(content in cons):
+                    renderer.add_if_buffer(ref)
+                    cons[ref] = content
+                else:
+                    print("Multiple lines with same ref number in file!")
+            renderer.render_buffers(cons)
+            print(len(cons))
+            renderer.render_lines(list(cons.values()), lambda x: print(f"{make_answers(mistletoe.markdown(x))}", file=g))
+            print(FOOTER, file=g)
+        
+    
 print("Done!")
