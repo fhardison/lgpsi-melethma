@@ -1,6 +1,6 @@
 import os
 import re
-
+from greek_normalisation.utils import nfc
 
 FILES = [
 ("00", os.path.join('..', 'src', 'grammar-index.md')),
@@ -23,5 +23,5 @@ for FILE in FILES:
         LCOUNT = 1
         prefix = FILE[0]
         for line in cons:
-            print(f"{prefix}.{LCOUNT} {line}", file=g)
+            print(nfc(f"{prefix}.{LCOUNT} {line}"), file=g)
             LCOUNT += 1

@@ -4,6 +4,7 @@ import glob
 import os
 import re
 import mistletoe
+from greek_normalisation.utils import nfc
 
 
 class Renderer():
@@ -181,7 +182,7 @@ for WORK in WORK_LIST:
                     print("Multiple lines with same ref number in file!")
             renderer.render_buffers(cons)
             print(len(cons))
-            renderer.render_lines(list(cons.values()), lambda x: print(f"{make_cloze_hint(mistletoe.markdown(x))}", file=g))
+            renderer.render_lines(list(cons.values()), lambda x: print(f"{nfc(make_cloze_hint(mistletoe.markdown(x)))}", file=g))
             print(FOOTER, file=g)
     continue
     with open(SRC, encoding="UTF-8") as f:
