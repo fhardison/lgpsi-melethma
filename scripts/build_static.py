@@ -124,6 +124,13 @@ WORK_LIST = glob.glob(os.path.join('..', 'src', '*.md'))
 def make_cloze(line):
     return re.sub(r' __([ .?;·])', r' ___\1', re.sub(r'{{[^}]+}}', '__', line))
 
+
+# Hello Sir, <span class="hint--bottom" aria-label="Thank you!">hover me.</span>
+def make_cloze_hint(line):
+    l = re.sub(r' {{([^}]+)}}([ .?;·])', r' <span class="hint--bottom" aria-label="\1"><b>___</b></span>\2', line)
+    return re.sub(r'{{([^}]+)}}', r'<span class="hint--bottom" aria-label="\1"><b>___</b></span>', l)
+    
+
 def make_answers(line):
     return line.replace('{{', '<strong>[').replace('}}', ']</strong>')
 
@@ -142,6 +149,7 @@ for WORK in WORK_LIST:
     <meta charset="utf-8">
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700&amp;subset=greek,greek-ext" rel="stylesheet">
     <link href="style.css" rel="stylesheet">
+    <link href="hint.min.css" rel="stylesheet">
 
     </head>
     <body>
@@ -173,8 +181,9 @@ for WORK in WORK_LIST:
                     print("Multiple lines with same ref number in file!")
             renderer.render_buffers(cons)
             print(len(cons))
-            renderer.render_lines(list(cons.values()), lambda x: print(f"{make_cloze(mistletoe.markdown(x))}", file=g))
+            renderer.render_lines(list(cons.values()), lambda x: print(f"{make_cloze_hint(mistletoe.markdown(x))}", file=g))
             print(FOOTER, file=g)
+    continue
     with open(SRC, encoding="UTF-8") as f:
         with open(ANSWERS, "w", encoding="UTF-8") as g:
             print(HEADER, file=g)
